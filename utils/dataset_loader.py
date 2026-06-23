@@ -12,7 +12,10 @@ class RiceDataset(Dataset):
 
         self.images = sorted(os.listdir(cloudy_dir))
 
-        self.transform = transforms.ToTensor()
+        self.transform = transforms.Compose([
+            transforms.Resize((256,256)),
+            transforms.ToTensor()
+        ])
 
     def __len__(self):
         return len(self.images)
